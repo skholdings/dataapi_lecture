@@ -1,0 +1,75 @@
+{
+	"name": "실시간 이벤트 탐지",
+	"interval": 5000,
+	"driverMemory": "1G",
+	"driverCores": 2,
+	"executorMemory": "1G",
+	"executorCores": 2,
+	"numExecutors": 2,
+	"queue": "default",
+	"thriftServerPort": 22000,
+	"branches": [{
+		"components": [{
+			"subType": "kafka",
+			"group": "reader",
+			"properties": {
+				"zkQuorum": "localhost:2181",
+				"threadNum": 1,
+				"receiverNum": 1,
+				"topics": "credit",
+				"group": "streaming"
+			}
+		}, {
+			"subType": "csv",
+			"group": "parser",
+			"properties": {
+				"delimiter": ",",
+				"tableName": "credit",
+				"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+				"columns": ["TransactionDate", "TransactionID", "TransactionType", "CardNumber", "CardOwner", "ExpireDate", "Amount:integer", "MerchantID", "LocationX:integer", "LocationY:integer"]
+			}
+		}, {
+			"subType": "string-contain",
+			"group": "filter",
+			"properties": {
+				"targetColumns": ["TransactionType"],
+				"values": ["P"]
+			}
+		}, {
+			"subType": "clone",
+			"group": "fork",
+			"properties": {
+				"targetBranches": [1, 2]
+			}
+		}]
+	}, {
+		"components": [{
+			"subType": "event",
+			"group": "function",
+			"properties": {
+				"ruleScript": "rule \"detect stream data with rule\"\ndialect \"mvel\"\nwhen\n    $c : credit() from entry-point EventStream\n    $bc : credit(\n        CardNumber==$c.CardNumber,\n        eval(($c.LocationX - LocationX) * ($c.LocationX - LocationX) + ($c.LocationY - LocationY) * ($c.LocationY - LocationY) > 5 * 5),\n        this before[0s, 60s] $c\n    ) from entry-point EventStream\nthen\n    event.add($bc.toString() + \" => \" + $c.toString());\nend",
+				"entryPoints": ["EventStream"],
+				"tableName": "event_detection",
+				"newColumn": "event",
+				"sourceBranches": [0]
+			}
+		}, {
+			"subType": "jdbc",
+			"group": "writer",
+			"properties": {
+				"url": "jdbc:mariadb://localhost:3306/streaming?sessionVariables=sql_mode=ANSI_QUOTES",
+				"driver": "org.mariadb.jdbc.Driver",
+				"user": "root",
+				"password": "hadoop"
+			}
+		}]
+	}, {
+		"components": [{
+			"subType": "sparkSQL",
+			"group": "writer",
+			"properties": {
+				"window": 30000
+			}
+		}]
+	}]
+}
