@@ -60,6 +60,8 @@
 
 - API 테스트
 
+> 툴 다운로드 : https://install.advancedrestclient.com/#/install
+
 > http://localhost:8765/api/v1/streaming
 
 > 로그인 서버로부터 Access Token 획득
