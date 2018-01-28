@@ -38,7 +38,7 @@
 
 <br>
 
-- Streaming 엔진 HDFS에 업로드
+- 처리 엔진 및 라이브러리 HDFS에 업로드
 
 > hadoop fs -put -f streaming-core-1.0-hdp263.jar /user/spark/streaming/driver/
 
@@ -46,11 +46,21 @@
 
 > hadoop fs -put -f mariadb-java-client-2.0.2.jar /user/spark/streaming/lib/
 
+> hadoop fs -put mariadb-java-client-2.0.2.jar /user/oozie/share/lib/lib_20171110144231/sqoop
+
 <br>
 
 - livy CR/LF 프로텍션 비활성화
 
 > Ambari 로그인 : raj_ops / raj_ops
+
+<br>
+
+- Oozie Property 등록 (Oozie 재시작)
+
+> oozie.service.ProxyUserService.proxyuser.hdfs.groups=*
+
+> oozie.service.ProxyUserService.proxyuser.hdfs.hosts=*
 
 <br>
 
