@@ -48,6 +48,8 @@
 
 - livy CR/LF 프로텍션 비활성화
 
+> Ambari 로그인 : raj_ops / raj_ops
+
 <br>
 
 - API 모듈 기동
