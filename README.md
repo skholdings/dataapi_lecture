@@ -96,6 +96,7 @@
 
 > hadoop fs -mkdir -p /tmp/table/merchant
 
+<br>
 
 > hadoop fs -put card.csv /tmp/table/card
 
