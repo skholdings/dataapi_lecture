@@ -1,0 +1,6 @@
+{
+ "queueName": "default",
+ "cardHistory": "/tmp/table/card",
+ "user": "/tmp/table/user",
+ "merchant": "/tmp/table/merchant"
+}
