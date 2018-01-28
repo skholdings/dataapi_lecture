@@ -22,7 +22,7 @@
 
 <br>
 
-- 데이터베이스 및 테이블 생성 : streaming, sso
+- 데이터베이스 및 테이블 생성 : streaming, batch, sso
 
 <br>
 
