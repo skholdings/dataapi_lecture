@@ -14,7 +14,9 @@
 
 <br>
 
-- Data API 모듈 설치 : API Gateway, Streaming, SSO, OAuth
+- Data API 모듈 설치 : API Gateway, Streaming, Batch, Common, SSO, OAuth
+
+> git clone https://github.com/skholdings/api-modules.git
 
 <br>
 
