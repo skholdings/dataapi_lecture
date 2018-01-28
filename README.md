@@ -80,7 +80,7 @@
 
 > 툴 다운로드 : https://install.advancedrestclient.com/#/install
 
-> http://localhost:8765/api/v1/streaming
+> http://localhost:8765/api/v1/{module name}
 
 > 로그인 서버로부터 Access Token 획득
 
@@ -88,7 +88,24 @@
 
 <br>
 
-- Kafka 기동 및 데이터 생성
+- Batch 테스트 파일 생성
+
+> hadoop fs -mkdir -p /tmp/table/card
+
+> hadoop fs -mkdir -p /tmp/table/user
+
+> hadoop fs -mkdir -p /tmp/table/merchant
+
+
+> hadoop fs -put card.csv /tmp/table/card
+
+> hadoop fs -put user.csv /tmp/table/user
+
+> hadoop fs -put merchant.csv /tmp/table/merchant
+
+<br>
+
+- Streaming 테스트 파일 생성 : Kafka 기동 및 데이터 생성
 
 > python credit_gen.py
 
