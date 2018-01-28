@@ -58,6 +58,10 @@
 
 > Streaming API 모듈 기동
 
+> Batch API 모듈 기동
+
+> Common API 모듈 기동
+
 <br>
 
 - API 테스트
