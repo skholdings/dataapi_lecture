@@ -14,7 +14,7 @@
 
 <br>
 
-- Data API 모듈 설치 : API Gateway, Streaming, Batch, Common, SSO, OAuth
+- Data API 모듈 설치 : API Gateway, Streaming, Batch, Common, SSO, OAuth, Globalworkflow
 
 > git clone https://github.com/skholdings/api-modules.git
 
@@ -24,7 +24,7 @@
 
 <br>
 
-- 데이터베이스 및 테이블 생성 : streaming, batch, sso
+- 데이터베이스 및 테이블 생성 : streaming, batch, sso, globalworkflow, pipeline
 
 <br>
 
