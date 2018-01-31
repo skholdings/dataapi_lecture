@@ -8,6 +8,10 @@
 
 - 터미널 다운로드 : https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe
 
+> host : localhost
+
+> port : 2222
+
 <br>
 
 - root 패스워드 변경 : hadoop(초기 패스워드) -> bigdata1234
