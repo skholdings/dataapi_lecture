@@ -80,7 +80,9 @@
 
 > 툴 다운로드 : https://install.advancedrestclient.com/#/install
 
-> http://localhost:8765/api/v1/{module name}
+> http://localhost:8765/api/v1/{module_name}
+
+> API 사용법(API Portal) : http://169.56.124.18:9000
 
 > 로그인 서버로부터 Access Token 획득
 
